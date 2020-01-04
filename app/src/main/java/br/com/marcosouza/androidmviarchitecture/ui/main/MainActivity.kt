@@ -1,7 +1,8 @@
-package br.com.marcosouza.androidmviarchitecture
+package br.com.marcosouza.androidmviarchitecture.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import br.com.marcosouza.androidmviarchitecture.R
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,7 +13,8 @@ class MainActivity : AppCompatActivity() {
     }
     fun showFragment() {
       supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container,
+            .replace(
+                R.id.fragment_container,
                 MainFragment(), "MainFragment(")
             .commit()
     }
