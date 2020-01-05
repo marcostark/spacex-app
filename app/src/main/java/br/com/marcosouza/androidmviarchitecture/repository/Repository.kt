@@ -1,79 +1,46 @@
 package br.com.marcosouza.androidmviarchitecture.repository
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Transformations
 import br.com.marcosouza.androidmviarchitecture.api.MyRetrofitBuilder
+import br.com.marcosouza.androidmviarchitecture.model.Post
+import br.com.marcosouza.androidmviarchitecture.model.User
 import br.com.marcosouza.androidmviarchitecture.ui.main.state.MainViewState
-import br.com.marcosouza.androidmviarchitecture.util.ApiEmptyResponse
-import br.com.marcosouza.androidmviarchitecture.util.ApiErrorResponse
 import br.com.marcosouza.androidmviarchitecture.util.ApiSuccessResponse
 import br.com.marcosouza.androidmviarchitecture.util.DataState
+import br.com.marcosouza.androidmviarchitecture.util.GenericApiResponse
 
 object Repository {
 
     fun getPosts(): LiveData<DataState<MainViewState>> {
-        return Transformations
-            .switchMap(MyRetrofitBuilder.apiService.getPosts()){ apiResponse ->
-                object: LiveData<DataState<MainViewState>>(){
-                    override fun onActive() {
-                        super.onActive()
-                        when(apiResponse){
-                            is ApiSuccessResponse -> {
-                                value = DataState.data(
-                                    data = MainViewState(
-                                        posts = apiResponse.body
-                                    )
-                                )
-                            }
-
-                            is ApiErrorResponse -> {
-                                value = DataState.error(
-                                    message = apiResponse.errorMessage
-                                )
-                            }
-
-                            is ApiEmptyResponse -> {
-                                value = DataState.error(
-                                    message = "HTTP 204. Return Nothing"
-                                )
-                            }
-                        }
-                    }
-                }
+        return object: NetworkBoundResource<List<Post>, MainViewState>(){
+            override fun handleApiSucessResponse(response: ApiSuccessResponse<List<Post>>) {
+                result.value = DataState.data(
+                    data = MainViewState(
+                        posts = response.body
+                    )
+                )
             }
+
+            override fun createCall(): LiveData<GenericApiResponse<List<Post>>> {
+                return MyRetrofitBuilder.apiService.getPosts()
+            }
+        }.asLiveData()
     }
 
     fun getUser(userId: String): LiveData<DataState<MainViewState>> {
-        return Transformations
-            .switchMap(MyRetrofitBuilder.apiService.getUser(userId)){ apiResponse ->
-                object: LiveData<DataState<MainViewState>>(){
-                    override fun onActive() {
-                        super.onActive()
-                        when(apiResponse){
-                            is ApiSuccessResponse -> {
-                                value = DataState.data(
-                                    data = MainViewState(
-                                        user = apiResponse.body
-                                    )
-                                )
-                            }
-
-                            is ApiErrorResponse -> {
-                                value = DataState.error(
-                                    message =  apiResponse.errorMessage
-
-                                )
-                            }
-
-                            is ApiEmptyResponse -> {
-                                value = DataState.error(
-                                    message = "HTTP 204. Return Nothing"
-                                )
-                            }
-                        }
-                    }
-                }
+        return object: NetworkBoundResource<User, MainViewState>(){
+            override fun handleApiSucessResponse(response: ApiSuccessResponse<User>) {
+                result.value = DataState.data(
+                    data = MainViewState(
+                        user = response.body
+                    )
+                )
             }
+
+            override fun createCall(): LiveData<GenericApiResponse<User>> {
+                return MyRetrofitBuilder.apiService.getUser(userId)
+            }
+        }.asLiveData()
     }
 
 }
