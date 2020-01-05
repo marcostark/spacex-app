@@ -7,6 +7,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -41,14 +42,28 @@ class MainFragment : Fragment() {
     fun subscribObservers(){
         viewModel.dataState.observe(viewLifecycleOwner, Observer {dataState ->
             println("DEBUG: Datasource: {$dataState}")
-            dataState.posts?.let {posts ->
-                // set Posts data
-                viewModel.setPostsListData(posts)
+
+            // Handle Data<T>
+            dataState.data?.let { mainViewState ->
+                mainViewState.posts?.let {posts ->
+                    // set Posts data
+                    viewModel.setPostsListData(posts)
+                }
+
+                mainViewState.user?.let {user ->
+                    // set Users Data
+                    viewModel.setUser(user)
+                }
             }
 
-            dataState.user?.let {user ->
-                // set Users Data
-                viewModel.setUser(user)
+            // Handle error
+            dataState.message?.let {
+                Toast.makeText(activity, "Error", Toast.LENGTH_SHORT)
+            }
+
+            // Handle loading
+            dataState.loading?.let {
+
             }
         })
 

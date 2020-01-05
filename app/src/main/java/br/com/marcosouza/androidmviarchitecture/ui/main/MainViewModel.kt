@@ -6,10 +6,12 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import br.com.marcosouza.androidmviarchitecture.model.Post
 import br.com.marcosouza.androidmviarchitecture.model.User
+import br.com.marcosouza.androidmviarchitecture.repository.Repository
 import br.com.marcosouza.androidmviarchitecture.ui.main.state.MainStateEvent
 import br.com.marcosouza.androidmviarchitecture.ui.main.state.MainViewState
 import br.com.marcosouza.androidmviarchitecture.ui.main.state.MainStateEvent.*
 import br.com.marcosouza.androidmviarchitecture.util.AbsentLiveData
+import br.com.marcosouza.androidmviarchitecture.util.DataState
 
 class MainViewModel: ViewModel(){
 
@@ -19,7 +21,7 @@ class MainViewModel: ViewModel(){
     val viewState: LiveData<MainViewState>
         get() = _viewState
 
-    val dataState: LiveData<MainViewState> = Transformations
+    val dataState: LiveData<DataState<MainViewState>> = Transformations
         .switchMap(_stateEvent){ stateEvent ->
 
             stateEvent?.let {stateEvent
@@ -27,57 +29,19 @@ class MainViewModel: ViewModel(){
             }
         }
 
-    fun handleStateEvent(stateEvent: MainStateEvent): LiveData<MainViewState> {
-        when(stateEvent) {
+    fun handleStateEvent(stateEvent: MainStateEvent): LiveData<DataState<MainViewState>> {
+        println("DEBUG: New StateEvent detected: $stateEvent")
+        when(stateEvent){
 
             is GetBlogPostsEvent -> {
-                //return AbsentLiveData.create()
-                return object: LiveData<MainViewState>(){
-                    override fun onActive() {
-                        super.onActive()
-                        val blogList: ArrayList<Post> = ArrayList()
-                        blogList.add(
-                            Post(
-                                pk = 0,
-                                title = "Vancouver PNE 2019",
-                                body = "Here is Jess and I at the Vancouver PNE. We ate a lot of food.",
-                                image = "https://cdn.open-api.xyz/open-api-static/static-blog-images/image8.jpg"
-                            )
-                        )
-                        blogList.add(
-                            Post(
-                                pk = 1,
-                                title = "Ready for a Walk",
-                                body = "Here I am at the park with my dogs Kiba and Maizy. Maizy is the smaller one and Kiba is the larger one.",
-                                image = "https://cdn.open-api.xyz/open-api-static/static-blog-images/image2.jpg"
-                            )
-                        )
-                        value = MainViewState(
-                            posts = blogList
-                        )
-                    }
-                }
-
+                return Repository.getPosts()
             }
 
             is GetUserEvent -> {
-                //return AbsentLiveData.create()
-                return object: LiveData<MainViewState>(){
-                    override fun onActive() {
-                        super.onActive()
-                        val user = User(
-                            email = "mitch@tabian.ca",
-                            username = "mitch",
-                            image = "https://cdn.open-api.xyz/open-api-static/static-random-images/logo_1080_1080.png"
-                        )
-                        value = MainViewState(
-                            user = user
-                        )
-                    }
-                }
+                return Repository.getUser(stateEvent.userId)
             }
 
-            is None -> {
+            is None ->{
                 return AbsentLiveData.create()
             }
         }
