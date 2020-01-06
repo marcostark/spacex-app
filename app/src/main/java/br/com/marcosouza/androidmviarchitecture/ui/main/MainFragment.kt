@@ -43,7 +43,7 @@ class MainFragment : Fragment() {
     }
 
     //
-    fun subscribObservers(){
+    private fun subscribObservers(){
         viewModel.dataState.observe(viewLifecycleOwner, Observer {dataState ->
             println("DEBUG: Datasource: {$dataState}")
 
@@ -51,17 +51,29 @@ class MainFragment : Fragment() {
             dataStateListener.onDataStateChange(dataState)
 
             // Handle Data<T>
-            dataState.data?.let { mainViewState ->
-                mainViewState.posts?.let {posts ->
-                    // set Posts data
-                    viewModel.setPostsListData(posts)
-                }
+            dataState.data?.let { event ->
+                event.getContentIfNotHandled()?.let {mainViewState ->
+                    mainViewState.posts?.let {posts ->
+                        // set Posts data
+                        viewModel.setPostsListData(posts)
+                    }
 
-                mainViewState.user?.let {user ->
-                    // set Users Data
-                    viewModel.setUser(user)
+                    mainViewState.user?.let {user ->
+                        // set Users Data
+                        viewModel.setUser(user)
+                    }
                 }
             }
+
+//            // Handle Progress bar
+//            dataState.loading?.let {
+//                println("DEBUG: LOADING: ${it}")
+//            }
+//
+//            // Handle message?
+//            dataState.message?.let {
+//                println("DEBUG: MESSAGE: ${it}")
+//            }
 
         })
 
