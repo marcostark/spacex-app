@@ -15,9 +15,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.marcosouza.androidmviarchitecture.R
 import br.com.marcosouza.androidmviarchitecture.model.Post
+import br.com.marcosouza.androidmviarchitecture.model.User
 import br.com.marcosouza.androidmviarchitecture.ui.main.state.DataStateListener
 import br.com.marcosouza.androidmviarchitecture.ui.main.state.MainStateEvent
 import br.com.marcosouza.androidmviarchitecture.util.TopSpacingItemDecoration
+import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.blog_list_item.*
 import kotlinx.android.synthetic.main.fragment_main.*
 import java.lang.ClassCastException
 import java.lang.Exception
@@ -89,9 +92,20 @@ class MainFragment : Fragment(), PostListAdapter.Interaction {
             }
 
             viewState.user?.let {
-                println("DEBUG Setting user data: ${it}")
+                println("DEBUG Setting user data: ${viewState.user}")
+                setUserProperties(it)
             }
         })
+    }
+
+    fun setUserProperties(user: User){
+        email.setText(user.email)
+        username.setText(user.username)
+        view?.let {
+            Glide.with(it.context)
+                .load(user.image)
+                .into(image)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
