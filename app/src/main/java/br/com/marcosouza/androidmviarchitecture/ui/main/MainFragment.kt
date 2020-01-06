@@ -12,16 +12,21 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.marcosouza.androidmviarchitecture.R
+import br.com.marcosouza.androidmviarchitecture.model.Post
 import br.com.marcosouza.androidmviarchitecture.ui.main.state.DataStateListener
 import br.com.marcosouza.androidmviarchitecture.ui.main.state.MainStateEvent
+import br.com.marcosouza.androidmviarchitecture.util.TopSpacingItemDecoration
+import kotlinx.android.synthetic.main.fragment_main.*
 import java.lang.ClassCastException
 import java.lang.Exception
 
-class MainFragment : Fragment() {
+class MainFragment : Fragment(), PostListAdapter.Interaction {
 
     lateinit var viewModel: MainViewModel
     lateinit var dataStateListener: DataStateListener
+    lateinit var postListAdapter: PostListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,6 +45,17 @@ class MainFragment : Fragment() {
         }?:throw Exception("Atividade inválida!")
 
         subscribObservers()
+        initRecyclerView()
+    }
+
+    private fun initRecyclerView(){
+        recycler_view.apply {
+            layoutManager = LinearLayoutManager(activity)
+            val topSpacingItemDecoration = TopSpacingItemDecoration(30)
+            addItemDecoration(topSpacingItemDecoration)
+            postListAdapter = PostListAdapter(this@MainFragment)
+            adapter = postListAdapter
+        }
     }
 
     //
@@ -64,22 +80,12 @@ class MainFragment : Fragment() {
                     }
                 }
             }
-
-//            // Handle Progress bar
-//            dataState.loading?.let {
-//                println("DEBUG: LOADING: ${it}")
-//            }
-//
-//            // Handle message?
-//            dataState.message?.let {
-//                println("DEBUG: MESSAGE: ${it}")
-//            }
-
         })
 
         viewModel.viewState.observe(viewLifecycleOwner, Observer { viewState ->
-            viewState.posts?.let {
-                println("DEBUG Setting post to recycleview: ${it}")
+            viewState.posts?.let {list ->
+                println("DEBUG Setting post to recycleview: ${viewState.posts}")
+                postListAdapter.submitList(list)
             }
 
             viewState.user?.let {
@@ -117,5 +123,9 @@ class MainFragment : Fragment() {
         }catch (e: ClassCastException) {
             println("DEBUG: $context must implement DataStateListener")
         }
+    }
+
+    override fun onItemSelected(position: Int, item: Post) {
+        println("DEBUG: ITEM: $item")
     }
 }
