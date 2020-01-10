@@ -1,4 +1,4 @@
-package br.com.marcosouza.androidmviarchitecture.ui.main.state
+package br.com.marcosouza.spacexapp.ui.main.state
 
 
 // see: https://kotlinlang.org/docs/reference/sealed-classes.html

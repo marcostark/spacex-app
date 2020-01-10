@@ -1,9 +1,9 @@
-package br.com.marcosouza.androidmviarchitecture.repository
+package br.com.marcosouza.spacexapp.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
-import br.com.marcosouza.androidmviarchitecture.util.*
-import br.com.marcosouza.androidmviarchitecture.util.Constants.Companion.TESTING_NETWORK_DELAY
+import br.com.marcosouza.spacexapp.util.*
+import br.com.marcosouza.spacexapp.util.Constants.Companion.TESTING_NETWORK_DELAY
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.GlobalScope

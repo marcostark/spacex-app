@@ -1,4 +1,4 @@
-package br.com.marcosouza.androidmviarchitecture.ui.main
+package br.com.marcosouza.spacexapp.ui.main
 
 import android.content.Context
 import android.os.Bundle
@@ -8,24 +8,23 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import br.com.marcosouza.androidmviarchitecture.R
-import br.com.marcosouza.androidmviarchitecture.model.Post
-import br.com.marcosouza.androidmviarchitecture.model.User
-import br.com.marcosouza.androidmviarchitecture.ui.main.state.DataStateListener
-import br.com.marcosouza.androidmviarchitecture.ui.main.state.MainStateEvent
-import br.com.marcosouza.androidmviarchitecture.util.TopSpacingItemDecoration
+import br.com.marcosouza.spacexapp.R
+import br.com.marcosouza.spacexapp.model.Post
+import br.com.marcosouza.spacexapp.model.User
+import br.com.marcosouza.spacexapp.ui.main.state.DataStateListener
+import br.com.marcosouza.spacexapp.ui.main.state.MainStateEvent
+import br.com.marcosouza.spacexapp.util.TopSpacingItemDecoration
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.blog_list_item.*
 import kotlinx.android.synthetic.main.fragment_main.*
 import java.lang.ClassCastException
 import java.lang.Exception
 
-class MainFragment : Fragment(), PostListAdapter.Interaction {
+class MainFragment : Fragment(),
+    PostListAdapter.Interaction {
 
     lateinit var viewModel: MainViewModel
     lateinit var dataStateListener: DataStateListener
@@ -54,9 +53,11 @@ class MainFragment : Fragment(), PostListAdapter.Interaction {
     private fun initRecyclerView(){
         recycler_view.apply {
             layoutManager = LinearLayoutManager(activity)
-            val topSpacingItemDecoration = TopSpacingItemDecoration(30)
+            val topSpacingItemDecoration =
+                TopSpacingItemDecoration(30)
             addItemDecoration(topSpacingItemDecoration)
-            postListAdapter = PostListAdapter(this@MainFragment)
+            postListAdapter =
+                PostListAdapter(this@MainFragment)
             adapter = postListAdapter
         }
     }

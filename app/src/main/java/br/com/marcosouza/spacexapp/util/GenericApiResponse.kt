@@ -1,4 +1,4 @@
-package br.com.marcosouza.androidmviarchitecture.util
+package br.com.marcosouza.spacexapp.util
 
 import android.util.Log
 import retrofit2.Response
@@ -15,7 +15,9 @@ sealed class GenericApiResponse<T> {
 
 
         fun <T> create(error: Throwable): ApiErrorResponse<T> {
-            return ApiErrorResponse(error.message ?: "unknown error")
+            return ApiErrorResponse(
+                error.message ?: "unknown error"
+            )
         }
 
         fun <T> create(response: Response<T>): GenericApiResponse<T> {
@@ -34,7 +36,9 @@ sealed class GenericApiResponse<T> {
                     return ApiErrorResponse("401 Unauthorized. Token may be invalid.")
                 }
                 else {
-                    return ApiSuccessResponse(body = body)
+                    return ApiSuccessResponse(
+                        body = body
+                    )
                 }
             }
             else{
@@ -44,7 +48,9 @@ sealed class GenericApiResponse<T> {
                 } else {
                     msg
                 }
-                return ApiErrorResponse(errorMsg ?: "unknown error")
+                return ApiErrorResponse(
+                    errorMsg ?: "unknown error"
+                )
             }
         }
     }

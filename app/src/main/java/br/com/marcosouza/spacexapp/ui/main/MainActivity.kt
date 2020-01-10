@@ -1,16 +1,17 @@
-package br.com.marcosouza.androidmviarchitecture.ui.main
+package br.com.marcosouza.spacexapp.ui.main
 
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import br.com.marcosouza.androidmviarchitecture.R
-import br.com.marcosouza.androidmviarchitecture.ui.main.state.DataStateListener
-import br.com.marcosouza.androidmviarchitecture.util.DataState
+import br.com.marcosouza.spacexapp.R
+import br.com.marcosouza.spacexapp.ui.main.state.DataStateListener
+import br.com.marcosouza.spacexapp.util.DataState
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), DataStateListener {
+class MainActivity : AppCompatActivity(),
+    DataStateListener {
 
     lateinit var viewModel: MainViewModel
 

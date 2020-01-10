@@ -1,4 +1,4 @@
-package br.com.marcosouza.androidmviarchitecture.ui.main
+package br.com.marcosouza.spacexapp.ui.main
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
-import br.com.marcosouza.androidmviarchitecture.R
-import br.com.marcosouza.androidmviarchitecture.model.Post
+import br.com.marcosouza.spacexapp.R
+import br.com.marcosouza.spacexapp.model.Post
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.blog_list_item.view.*
 
