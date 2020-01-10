@@ -1,4 +1,4 @@
-package br.com.marcosouza.androidmviarchitecture.util
+package br.com.marcosouza.spacexapp.util
 
 data class DataState<T>(
     var message: Event<String>? = null,
@@ -18,7 +18,7 @@ data class DataState<T>(
 
         fun <T> loading(
             isLoading: Boolean
-        ): DataState<T>{
+        ): DataState<T> {
             return DataState(
                 message = null,
                 loading = isLoading,
@@ -29,11 +29,15 @@ data class DataState<T>(
         fun <T> data(
             message: String? = null,
             data: T? = null
-        ): DataState<T>{
+        ): DataState<T> {
             return DataState(
-                message = Event.messageEvent(message),
+                message = Event.messageEvent(
+                    message
+                ),
                 loading = false,
-                data = Event.dataEvent(data)
+                data = Event.dataEvent(
+                    data
+                )
             )
         }
     }

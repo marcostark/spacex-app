@@ -1,4 +1,4 @@
-package br.com.marcosouza.androidmviarchitecture.util
+package br.com.marcosouza.spacexapp.util
 
 /**
  * Usado como invólucro para dados expostos por meio de um LiveData  que representa um evento

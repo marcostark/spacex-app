@@ -1,4 +1,4 @@
-package br.com.marcosouza.androidmviarchitecture.model
+package br.com.marcosouza.spacexapp.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

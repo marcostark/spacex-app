@@ -1,9 +1,9 @@
-package br.com.marcosouza.androidmviarchitecture.api
+package br.com.marcosouza.spacexapp.api
 
 import androidx.lifecycle.LiveData
-import br.com.marcosouza.androidmviarchitecture.model.Post
-import br.com.marcosouza.androidmviarchitecture.model.User
-import br.com.marcosouza.androidmviarchitecture.util.GenericApiResponse
+import br.com.marcosouza.spacexapp.model.Post
+import br.com.marcosouza.spacexapp.model.User
+import br.com.marcosouza.spacexapp.util.GenericApiResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 

@@ -1,17 +1,17 @@
-package br.com.marcosouza.androidmviarchitecture.ui.main
+package br.com.marcosouza.spacexapp.ui.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
-import br.com.marcosouza.androidmviarchitecture.model.Post
-import br.com.marcosouza.androidmviarchitecture.model.User
-import br.com.marcosouza.androidmviarchitecture.repository.Repository
-import br.com.marcosouza.androidmviarchitecture.ui.main.state.MainStateEvent
-import br.com.marcosouza.androidmviarchitecture.ui.main.state.MainViewState
-import br.com.marcosouza.androidmviarchitecture.ui.main.state.MainStateEvent.*
-import br.com.marcosouza.androidmviarchitecture.util.AbsentLiveData
-import br.com.marcosouza.androidmviarchitecture.util.DataState
+import br.com.marcosouza.spacexapp.model.Post
+import br.com.marcosouza.spacexapp.model.User
+import br.com.marcosouza.spacexapp.repository.Repository
+import br.com.marcosouza.spacexapp.ui.main.state.MainStateEvent
+import br.com.marcosouza.spacexapp.ui.main.state.MainViewState
+import br.com.marcosouza.spacexapp.ui.main.state.MainStateEvent.*
+import br.com.marcosouza.spacexapp.util.AbsentLiveData
+import br.com.marcosouza.spacexapp.util.DataState
 
 class MainViewModel: ViewModel(){
 
@@ -59,7 +59,7 @@ class MainViewModel: ViewModel(){
         _viewState.value = update
     }
 
-    fun getCurrentViewStateOrNew(): MainViewState{
+    fun getCurrentViewStateOrNew(): MainViewState {
         val value = viewState.value?.let {
             it
         }?: MainViewState()
