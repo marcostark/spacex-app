@@ -1,4 +1,4 @@
-package br.com.marcosouza.androidmviarchitecture
+package br.com.marcosouza.spacexapp
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
