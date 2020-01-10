@@ -1,4 +1,4 @@
-package br.com.marcosouza.androidmviarchitecture.util
+package br.com.marcosouza.spacexapp.util
 
 class Constants {
 

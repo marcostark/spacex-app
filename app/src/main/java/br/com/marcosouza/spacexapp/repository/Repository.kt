@@ -1,13 +1,13 @@
-package br.com.marcosouza.androidmviarchitecture.repository
+package br.com.marcosouza.spacexapp.repository
 
 import androidx.lifecycle.LiveData
-import br.com.marcosouza.androidmviarchitecture.api.MyRetrofitBuilder
-import br.com.marcosouza.androidmviarchitecture.model.Post
-import br.com.marcosouza.androidmviarchitecture.model.User
-import br.com.marcosouza.androidmviarchitecture.ui.main.state.MainViewState
-import br.com.marcosouza.androidmviarchitecture.util.ApiSuccessResponse
-import br.com.marcosouza.androidmviarchitecture.util.DataState
-import br.com.marcosouza.androidmviarchitecture.util.GenericApiResponse
+import br.com.marcosouza.spacexapp.api.MyRetrofitBuilder
+import br.com.marcosouza.spacexapp.model.Post
+import br.com.marcosouza.spacexapp.model.User
+import br.com.marcosouza.spacexapp.ui.main.state.MainViewState
+import br.com.marcosouza.spacexapp.util.ApiSuccessResponse
+import br.com.marcosouza.spacexapp.util.DataState
+import br.com.marcosouza.spacexapp.util.GenericApiResponse
 
 object Repository {
 

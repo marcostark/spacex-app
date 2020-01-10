@@ -1,6 +1,6 @@
-package br.com.marcosouza.androidmviarchitecture.api
+package br.com.marcosouza.spacexapp.api
 
-import br.com.marcosouza.androidmviarchitecture.util.LiveDataCallAdapterFactory
+import br.com.marcosouza.spacexapp.util.LiveDataCallAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

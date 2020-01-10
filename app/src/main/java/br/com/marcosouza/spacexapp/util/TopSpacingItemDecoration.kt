@@ -1,4 +1,4 @@
-package br.com.marcosouza.androidmviarchitecture.util
+package br.com.marcosouza.spacexapp.util
 
 import androidx.recyclerview.widget.RecyclerView
 import android.graphics.Rect
