@@ -8,18 +8,22 @@ import androidx.lifecycle.ViewModelProvider
 import br.com.marcosouza.spacexapp.R
 import br.com.marcosouza.spacexapp.ui.main.state.DataStateListener
 import br.com.marcosouza.spacexapp.util.DataState
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity(),
     DataStateListener {
 
     lateinit var viewModel: MainViewModel
+    private var navigationView: BottomNavigationView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
         showFragment()
     }

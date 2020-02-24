@@ -1,4 +1,4 @@
-package br.com.marcosouza.spacexapp.ui.main
+package br.com.marcosouza.spacexapp.ui.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
