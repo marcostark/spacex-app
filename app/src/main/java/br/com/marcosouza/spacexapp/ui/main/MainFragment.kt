@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.marcosouza.spacexapp.R
+import br.com.marcosouza.spacexapp.ui.adapter.LatestLaunchListAdapter
 import br.com.marcosouza.spacexapp.model.Post
 import br.com.marcosouza.spacexapp.model.User
 import br.com.marcosouza.spacexapp.ui.main.state.DataStateListener
