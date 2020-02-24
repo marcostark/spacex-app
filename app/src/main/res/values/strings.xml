@@ -1,6 +1,9 @@
 <resources>
-    <string name="app_name">Android MVI Architecture</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="app_name">Space X - App</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_rockets">Rockets</string>
+    <string name="title_latest">Latest</string>
+    <string name="title_dragons">Dragons</string>
 </resources>

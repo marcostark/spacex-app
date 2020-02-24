@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="br.com.marcosouza.spacexapp.ui.main.MainFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="br.com.marcosouza.spacexapp.ui.main.fragments.latest.LatestFragment"
+        android:label="@string/title_latest"
+        tools:layout="@layout/fragment_latest" />
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="br.com.marcosouza.spacexapp.ui.main.fragments.rockets.RocketsFragment"
+        android:label="@string/title_rockets"
+        tools:layout="@layout/fragment_dragons" />
+
+    <fragment
+        android:id="@+id/navigation_dragons"
+        android:name="br.com.marcosouza.spacexapp.ui.main.fragments.dragons.DragonsFragment"
+        android:label="@string/title_dragons"
+        tools:layout="@layout/fragment_dragons" />
+</navigation>
