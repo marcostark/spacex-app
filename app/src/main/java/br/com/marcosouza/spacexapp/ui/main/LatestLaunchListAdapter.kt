@@ -11,7 +11,7 @@ import br.com.marcosouza.spacexapp.model.Post
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.blog_list_item.view.*
 
-class PostListAdapter(private val interaction: Interaction? = null) :
+class LatestLaunchListAdapter(private val interaction: Interaction? = null) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Post>() {

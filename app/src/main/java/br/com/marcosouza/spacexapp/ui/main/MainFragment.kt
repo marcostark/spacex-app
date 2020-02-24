@@ -24,11 +24,11 @@ import java.lang.ClassCastException
 import java.lang.Exception
 
 class MainFragment : Fragment(),
-    PostListAdapter.Interaction {
+    LatestLaunchListAdapter.Interaction {
 
     lateinit var viewModel: MainViewModel
     lateinit var dataStateListener: DataStateListener
-    lateinit var postListAdapter: PostListAdapter
+    lateinit var latestLaunchListAdapter: LatestLaunchListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -56,9 +56,9 @@ class MainFragment : Fragment(),
             val topSpacingItemDecoration =
                 TopSpacingItemDecoration(30)
             addItemDecoration(topSpacingItemDecoration)
-            postListAdapter =
-                PostListAdapter(this@MainFragment)
-            adapter = postListAdapter
+            latestLaunchListAdapter =
+                LatestLaunchListAdapter(this@MainFragment)
+            adapter = latestLaunchListAdapter
         }
     }
 
@@ -89,7 +89,7 @@ class MainFragment : Fragment(),
         viewModel.viewState.observe(viewLifecycleOwner, Observer { viewState ->
             viewState.posts?.let {list ->
                 println("DEBUG Setting post to recycleview: ${viewState.posts}")
-                postListAdapter.submitList(list)
+                latestLaunchListAdapter.submitList(list)
             }
 
             viewState.user?.let {
