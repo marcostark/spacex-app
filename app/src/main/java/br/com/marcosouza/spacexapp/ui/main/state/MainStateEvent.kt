@@ -10,6 +10,14 @@ sealed class MainStateEvent {
         val userId: String
     ): MainStateEvent()
 
+    class GetRocketsEvent: MainStateEvent()
+
+    class GetDragonsEvent: MainStateEvent()
+
+    class GetAllLaunchesEvent: MainStateEvent()
+
+    class GetLaunchEvent: MainStateEvent()
+
     class None: MainStateEvent()
 
 }

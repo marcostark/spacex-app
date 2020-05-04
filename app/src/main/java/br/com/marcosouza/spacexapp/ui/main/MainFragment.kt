@@ -49,6 +49,7 @@ class MainFragment : Fragment(),
 
         subscribObservers()
         initRecyclerView()
+       // triggerGetPostsEvent()
     }
 
     private fun initRecyclerView(){
@@ -95,20 +96,20 @@ class MainFragment : Fragment(),
 
             viewState.user?.let {
                 println("DEBUG Setting user data: ${viewState.user}")
-                setUserProperties(it)
+             //   setUserProperties(it)
             }
         })
     }
 
-    fun setUserProperties(user: User){
-        email.setText(user.email)
-        username.setText(user.username)
-        view?.let {
-            Glide.with(it.context)
-                .load(user.image)
-                .into(image)
-        }
-    }
+//    fun setUserProperties(user: User){
+//        email.setText(user.email)
+//        username.setText(user.username)
+//        view?.let {
+//            Glide.with(it.context)
+//                .load(user.image)
+//                .into(image)
+//        }
+//    }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
@@ -117,8 +118,8 @@ class MainFragment : Fragment(),
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-            R.id.action_get_user -> triggerGetUserEvent()
-            R.id.action_get_blogs -> triggerGetPostsEvent()
+            //R.id.action_get_user -> triggerGetUserEvent()
+            //R.id.action_get_blogs -> triggerGetPostsEvent()
         }
         return super.onOptionsItemSelected(item)
     }
