@@ -67,6 +67,11 @@ class RocketsListAdapter(private val interaction: Interaction? = null) :
             }
 
             itemView.text_rocket_title.text = item.rocketName
+            if(item.active == true) {
+                itemView.text_rocket_is_active.text = "ATIVO"
+            } else  {
+                itemView.text_rocket_is_active.text = "INATIVO"
+            }
 //            Glide.with(itemView.context)
 //                .load(item.image)
 //                .into(itemView.blog_image)

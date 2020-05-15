@@ -14,7 +14,17 @@ class Launch (
 
     @Expose
     @SerializedName("launch_date_utc")
-    val launchDate: String? = null
+    val launchDate: String? = null,
+
+    @Expose
+    @SerializedName("rocket")
+    val rocket: Rocket? = null,
+
+    @Expose
+    @SerializedName("launch_site")
+    val launchSite: LaunchSite? = null
+
+
 ){
 
     override fun toString(): String {
@@ -35,6 +45,20 @@ class Launch (
     override fun hashCode(): Int {
         return flightNumber ?: 0
     }
+}
 
+class LaunchSite (
+    @Expose
+    @SerializedName("site_id")
+    val siteId: Int? = null,
+
+    @Expose
+    @SerializedName("site_name")
+    val siteName: String? = null,
+
+    @Expose
+    @SerializedName("site_name_long")
+    val siteNameLong: String? = null
+){
 
 }

@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.marcosouza.spacexapp.R
+import br.com.marcosouza.spacexapp.model.Launch
 import br.com.marcosouza.spacexapp.ui.adapter.LatestLaunchListAdapter
 import br.com.marcosouza.spacexapp.model.Post
 import br.com.marcosouza.spacexapp.model.User
@@ -21,6 +22,7 @@ import br.com.marcosouza.spacexapp.ui.main.state.MainStateEvent
 import br.com.marcosouza.spacexapp.util.TopSpacingItemDecoration
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_main.*
+import kotlinx.android.synthetic.main.upcoming_list_item.*
 import java.lang.ClassCastException
 import java.lang.Exception
 
@@ -48,21 +50,21 @@ class MainFragment : Fragment(),
         }?:throw Exception("Atividade inválida!")
 
         subscribObservers()
-        initRecyclerView()
-        //triggerGetPostsEvent()
+//        initRecyclerView()
+        triggerGetLauchUpcomingEvent()
     }
 
-    private fun initRecyclerView(){
-        recycler_view.apply {
-            layoutManager = LinearLayoutManager(activity)
-            val topSpacingItemDecoration =
-                TopSpacingItemDecoration(30)
-            addItemDecoration(topSpacingItemDecoration)
-            latestLaunchListAdapter =
-                LatestLaunchListAdapter(this@MainFragment)
-            adapter = latestLaunchListAdapter
-        }
-    }
+//    private fun initRecyclerView(){
+//        recycler_view.apply {
+//            layoutManager = LinearLayoutManager(activity)
+//            val topSpacingItemDecoration =
+//                TopSpacingItemDecoration(30)
+//            addItemDecoration(topSpacingItemDecoration)
+//            latestLaunchListAdapter =
+//                LatestLaunchListAdapter(this@MainFragment)
+//            adapter = latestLaunchListAdapter
+//        }
+//    }
 
     //
     private fun subscribObservers(){
@@ -75,30 +77,38 @@ class MainFragment : Fragment(),
             // Handle Data<T>
             dataState.data?.let { event ->
                 event.getContentIfNotHandled()?.let {mainViewState ->
-                    mainViewState.posts?.let {posts ->
+                    mainViewState.launch?.let {launch ->
                         // set Posts data
-                        viewModel.setPostsListData(posts)
+                        viewModel.setLaunchData(launch)
                     }
 
-                    mainViewState.user?.let {user ->
-                        // set Users Data
-                        viewModel.setUser(user)
-                    }
+//                    mainViewState.user?.let {user ->
+//                        // set Users Data
+//                        viewModel.setUser(user)
+//                    }
                 }
             }
         })
 
         viewModel.viewState.observe(viewLifecycleOwner, Observer { viewState ->
-            viewState.posts?.let {list ->
-                println("DEBUG Setting post to recycleview: ${viewState.posts}")
-                latestLaunchListAdapter.submitList(list)
+            viewState.launch?.let {launch ->
+                println("DEBUG Setting post to recycleview: ${launch}")
+                this.initComponents(launch)
+//                latestLaunchListAdapter.submitList(list)
+
             }
 
-            viewState.user?.let {
-                println("DEBUG Setting user data: ${viewState.user}")
-             //   setUserProperties(it)
-            }
+//            viewState.user?.let {
+//                println("DEBUG Setting user data: ${viewState.user}")
+//             //   setUserProperties(it)
+//            }
         })
+    }
+
+    private fun initComponents(launch: Launch) {
+        text_launch_date_upcoming.text = launch.launchDate
+        text_launch_title.text = launch.rocket?.rocketName
+        text_launch_site_value.text = launch.launchSite?.siteNameLong
     }
 
 //    fun setUserProperties(user: User){
@@ -124,12 +134,8 @@ class MainFragment : Fragment(),
         return super.onOptionsItemSelected(item)
     }
 
-    private fun triggerGetPostsEvent() {
-        viewModel.setStateEvent(MainStateEvent.GetBlogPostsEvent())
-    }
-
-    private fun triggerGetUserEvent() {
-        viewModel.setStateEvent(MainStateEvent.GetUserEvent("1"))
+    private fun triggerGetLauchUpcomingEvent() {
+        viewModel.setStateEvent(MainStateEvent.GetNextLaunchEvent())
     }
 
     // Caso metodo nao seja adicionado na classe que implementa a interface

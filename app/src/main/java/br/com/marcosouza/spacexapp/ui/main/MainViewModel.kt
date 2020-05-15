@@ -61,6 +61,10 @@ class MainViewModel: ViewModel(){
                 return Repository.getLatestLaunch()
             }
 
+            is GetNextLaunchEvent -> {
+                return Repository.getNextLaunch()
+            }
+
             is None ->{
                 return AbsentLiveData.create()
             }

@@ -18,6 +18,8 @@ sealed class MainStateEvent {
 
     class GetLaunchEvent: MainStateEvent()
 
+    class GetNextLaunchEvent: MainStateEvent()
+
     class None: MainStateEvent()
 
 }

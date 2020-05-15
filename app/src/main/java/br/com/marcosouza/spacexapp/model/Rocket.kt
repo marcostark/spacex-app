@@ -18,7 +18,31 @@ class Rocket (
 
     @Expose
     @SerializedName("rocket_type")
-    val rocketType: String? = null
+    val rocketType: String? = null,
+
+    @Expose
+    @SerializedName("active")
+    val active: Boolean? = false,
+
+    @Expose
+    @SerializedName("stages")
+    val stages: Int? = null,
+
+    @Expose
+    @SerializedName("cost_per_launch")
+    val costPerLaunch: String? = null,
+
+    @Expose
+    @SerializedName("first_flight")
+    val firstFlight: String? = null,
+
+    @Expose
+    @SerializedName("company")
+    val company: String? = null,
+
+    @Expose
+    @SerializedName("country")
+    val country: String? = null
 
 ) {
     override fun toString(): String {

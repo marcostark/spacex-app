@@ -53,27 +53,19 @@
                 android:textStyle="bold"
                 android:textColor="#000"
                 android:textSize="18sp"
-                android:layout_marginTop="4dp"
-                />
+                android:layout_marginTop="4dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/text_rocket_model"
-                android:text="@string/rocket_model"
-                android:textColor="#000"
+                android:background="#16BE27"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="5dp"
+                android:id="@+id/text_rocket_is_active"
+                android:text="@string/rocket_is_active"
+                android:textColor="#FFF"
                 android:textSize="12sp"
-                android:layout_marginTop="4dp"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/text_rocket_launch_date"
-                android:text="@string/rocket_lauch_date"
-                android:textColor="#000"
-                android:textSize="12sp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="8dp"
                 />
 
         </LinearLayout>

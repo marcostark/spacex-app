@@ -67,6 +67,8 @@ class LaunchListAdapter(private val interaction: Interaction? = null) :
             }
 
             itemView.text_launch_title.text = item.missionName
+            itemView.text_launch_site.text = item.launchSite?.siteName
+            itemView.text_launch_date.text = item.launchDate
 //            Glide.with(itemView.context)
 //                .load(item.image)
 //                .into(itemView.blog_image)
