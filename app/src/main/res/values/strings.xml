@@ -6,4 +6,7 @@
     <string name="title_rockets">Rockets</string>
     <string name="title_latest">Latest</string>
     <string name="title_dragons">Dragons</string>
+    <string name="rocket_name">Falcon 9</string>
+    <string name="rocket_model">CCAES SLC 40</string>
+    <string name="rocket_lauch_date">20-05-2020</string>
 </resources>

@@ -49,7 +49,7 @@ class MainFragment : Fragment(),
 
         subscribObservers()
         initRecyclerView()
-       // triggerGetPostsEvent()
+        //triggerGetPostsEvent()
     }
 
     private fun initRecyclerView(){

@@ -8,17 +8,24 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.marcosouza.spacexapp.R
+import br.com.marcosouza.spacexapp.model.Rocket
+import br.com.marcosouza.spacexapp.ui.adapter.RocketsListAdapter
 import br.com.marcosouza.spacexapp.ui.main.MainViewModel
 import br.com.marcosouza.spacexapp.ui.main.state.DataStateListener
 import br.com.marcosouza.spacexapp.ui.main.state.MainStateEvent
+import br.com.marcosouza.spacexapp.util.TopSpacingItemDecoration
+import kotlinx.android.synthetic.main.fragment_main.*
 import java.lang.ClassCastException
 import java.lang.Exception
 
-class RocketsFragment : Fragment() {
+class RocketsFragment : Fragment(),
+    RocketsListAdapter.Interaction {
 
     private lateinit var viewModel: MainViewModel
     lateinit var dataStateListener: DataStateListener
+    lateinit var rocketsListAdapter: RocketsListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,7 +43,9 @@ class RocketsFragment : Fragment() {
         }?:throw Exception("Atividade inválida!")
 
         subscribeObservers()
+        initRecyclerView()
         triggerGetRocketsEvent()
+
     }
 
     private fun subscribeObservers(){
@@ -53,6 +62,26 @@ class RocketsFragment : Fragment() {
                 }
             }
         })
+
+        viewModel.viewState.observe(viewLifecycleOwner, Observer { viewState ->
+            viewState.rockets?.let {list ->
+                println("DEBUG Setting post to recycleview: ${viewState.rockets}")
+                rocketsListAdapter.submitList(list)
+
+            }
+        })
+    }
+
+    private fun initRecyclerView(){
+        recycler_view.apply {
+            layoutManager = LinearLayoutManager(activity)
+            val topSpacingItemDecoration =
+                TopSpacingItemDecoration(30)
+            addItemDecoration(topSpacingItemDecoration)
+            rocketsListAdapter =
+                RocketsListAdapter(this@RocketsFragment)
+            adapter = rocketsListAdapter
+        }
     }
 
     private fun triggerGetRocketsEvent() {
@@ -69,4 +98,7 @@ class RocketsFragment : Fragment() {
         }
     }
 
+    override fun onItemSelected(position: Int, item: Rocket) {
+        println("DEBUG: ITEM: $item")
+    }
 }

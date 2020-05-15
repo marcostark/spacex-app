@@ -14,10 +14,32 @@ class Rocket (
 
     @Expose
     @SerializedName("description")
-    val description: String? = null
+    val description: String? = null,
+
+    @Expose
+    @SerializedName("rocket_type")
+    val rocketType: String? = null
 
 ) {
     override fun toString(): String {
-        return "Rocket(id=$id, rocketName=$rocketName, description=$description)"
+        return "Rocket(id=$id, rocketName=$rocketName, description=$description, rocketType=$rocketType)"
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Rocket
+
+        if (id != other.id) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = id ?: 0
+        return result
+    }
+
+
 }
