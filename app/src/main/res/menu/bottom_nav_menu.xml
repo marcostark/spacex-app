@@ -16,9 +16,9 @@
         android:icon="@drawable/ic_notifications_black_24dp"
         android:title="@string/title_rockets" />
 
-    <item
-        android:id="@+id/navigation_dragons"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_dragons" />
+<!--    <item-->
+<!--        android:id="@+id/navigation_dragons"-->
+<!--        android:icon="@drawable/ic_dashboard_black_24dp"-->
+<!--        android:title="@string/title_dragons" />-->
 
 </menu>

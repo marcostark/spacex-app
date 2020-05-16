@@ -17,6 +17,7 @@ import br.com.marcosouza.spacexapp.ui.main.state.DataStateListener
 import br.com.marcosouza.spacexapp.ui.main.state.MainStateEvent
 import br.com.marcosouza.spacexapp.util.TopSpacingItemDecoration
 import kotlinx.android.synthetic.main.fragment_main.*
+import kotlinx.android.synthetic.main.fragment_rockets.*
 import java.lang.ClassCastException
 import java.lang.Exception
 

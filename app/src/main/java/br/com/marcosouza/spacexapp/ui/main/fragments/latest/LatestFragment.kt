@@ -16,6 +16,7 @@ import br.com.marcosouza.spacexapp.ui.main.MainViewModel
 import br.com.marcosouza.spacexapp.ui.main.state.DataStateListener
 import br.com.marcosouza.spacexapp.ui.main.state.MainStateEvent
 import br.com.marcosouza.spacexapp.util.TopSpacingItemDecoration
+import kotlinx.android.synthetic.main.fragment_latest.*
 import kotlinx.android.synthetic.main.fragment_main.*
 import java.lang.ClassCastException
 import java.lang.Exception
@@ -72,7 +73,7 @@ class LatestFragment : Fragment(),
     }
 
     private fun initRecyclerView(){
-        recycler_view.apply {
+        rv_latest.apply {
             layoutManager = LinearLayoutManager(activity)
             val topSpacingItemDecoration =
                 TopSpacingItemDecoration(30)

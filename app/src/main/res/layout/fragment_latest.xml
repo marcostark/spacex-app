@@ -19,7 +19,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:id="@+id/recycler_view"
+            android:id="@+id/rv_latest"
             android:nestedScrollingEnabled="false"
             android:layout_marginTop="15dp"
             />

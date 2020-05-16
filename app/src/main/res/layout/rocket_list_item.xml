@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:text="ROCKET"
                 android:textStyle="bold"
-                android:textColor="#FF003D"
+                android:textColor="@color/red"
                 android:textSize="10sp"
                 />
 
@@ -58,7 +58,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#16BE27"
+                android:background="@color/green"
                 android:paddingHorizontal="15dp"
                 android:paddingVertical="5dp"
                 android:id="@+id/text_rocket_is_active"

@@ -23,9 +23,9 @@
         android:label="@string/title_rockets"
         tools:layout="@layout/fragment_dragons" />
 
-    <fragment
-        android:id="@+id/navigation_dragons"
-        android:name="br.com.marcosouza.spacexapp.ui.main.fragments.dragons.DragonsFragment"
-        android:label="@string/title_dragons"
-        tools:layout="@layout/fragment_dragons" />
+<!--    <fragment-->
+<!--        android:id="@+id/navigation_dragons"-->
+<!--        android:name="br.com.marcosouza.spacexapp.ui.main.fragments.dragons.DragonsFragment"-->
+<!--        android:label="@string/title_dragons"-->
+<!--        tools:layout="@layout/fragment_dragons" />-->
 </navigation>

@@ -73,10 +73,10 @@ class MainActivity : AppCompatActivity(),
     private var navigationItemSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.navigation_dragons -> {
-                    showFragment(DragonsFragment())
-                    return@OnNavigationItemSelectedListener true
-                }
+//                R.id.navigation_dragons -> {
+//                    showFragment(DragonsFragment())
+//                    return@OnNavigationItemSelectedListener true
+//                }
                 R.id.navigation_rockets -> {
                     showFragment(RocketsFragment())
                     return@OnNavigationItemSelectedListener true

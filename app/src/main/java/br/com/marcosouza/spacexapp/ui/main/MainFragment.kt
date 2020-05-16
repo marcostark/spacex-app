@@ -11,18 +11,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.marcosouza.spacexapp.R
 import br.com.marcosouza.spacexapp.model.Launch
 import br.com.marcosouza.spacexapp.ui.adapter.LatestLaunchListAdapter
 import br.com.marcosouza.spacexapp.model.Post
-import br.com.marcosouza.spacexapp.model.User
 import br.com.marcosouza.spacexapp.ui.main.state.DataStateListener
 import br.com.marcosouza.spacexapp.ui.main.state.MainStateEvent
-import br.com.marcosouza.spacexapp.util.TopSpacingItemDecoration
-import com.bumptech.glide.Glide
+import br.com.marcosouza.spacexapp.util.Utils
 import kotlinx.android.synthetic.main.fragment_main.*
-import kotlinx.android.synthetic.main.upcoming_list_item.*
 import java.lang.ClassCastException
 import java.lang.Exception
 
@@ -50,23 +46,9 @@ class MainFragment : Fragment(),
         }?:throw Exception("Atividade inválida!")
 
         subscribObservers()
-//        initRecyclerView()
         triggerGetLauchUpcomingEvent()
     }
 
-//    private fun initRecyclerView(){
-//        recycler_view.apply {
-//            layoutManager = LinearLayoutManager(activity)
-//            val topSpacingItemDecoration =
-//                TopSpacingItemDecoration(30)
-//            addItemDecoration(topSpacingItemDecoration)
-//            latestLaunchListAdapter =
-//                LatestLaunchListAdapter(this@MainFragment)
-//            adapter = latestLaunchListAdapter
-//        }
-//    }
-
-    //
     private fun subscribObservers(){
         viewModel.dataState.observe(viewLifecycleOwner, Observer {dataState ->
             println("DEBUG: Datasource: {$dataState}")
@@ -78,14 +60,8 @@ class MainFragment : Fragment(),
             dataState.data?.let { event ->
                 event.getContentIfNotHandled()?.let {mainViewState ->
                     mainViewState.launch?.let {launch ->
-                        // set Posts data
                         viewModel.setLaunchData(launch)
                     }
-
-//                    mainViewState.user?.let {user ->
-//                        // set Users Data
-//                        viewModel.setUser(user)
-//                    }
                 }
             }
         })
@@ -94,32 +70,16 @@ class MainFragment : Fragment(),
             viewState.launch?.let {launch ->
                 println("DEBUG Setting post to recycleview: ${launch}")
                 this.initComponents(launch)
-//                latestLaunchListAdapter.submitList(list)
-
             }
-
-//            viewState.user?.let {
-//                println("DEBUG Setting user data: ${viewState.user}")
-//             //   setUserProperties(it)
-//            }
         })
     }
 
     private fun initComponents(launch: Launch) {
-        text_launch_date_upcoming.text = launch.launchDate
+        var dateFormated = Utils.toSimpleString(launch.launchDate)
+        text_launch_date_upcoming.text = dateFormated
         text_launch_title.text = launch.rocket?.rocketName
         text_launch_site_value.text = launch.launchSite?.siteNameLong
     }
-
-//    fun setUserProperties(user: User){
-//        email.setText(user.email)
-//        username.setText(user.username)
-//        view?.let {
-//            Glide.with(it.context)
-//                .load(user.image)
-//                .into(image)
-//        }
-//    }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)

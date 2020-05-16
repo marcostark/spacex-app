@@ -71,6 +71,7 @@ class RocketsListAdapter(private val interaction: Interaction? = null) :
                 itemView.text_rocket_is_active.text = "ATIVO"
             } else  {
                 itemView.text_rocket_is_active.text = "INATIVO"
+                itemView.text_rocket_is_active.setBackgroundColor(resources.getColor(R.color.red))
             }
 //            Glide.with(itemView.context)
 //                .load(item.image)

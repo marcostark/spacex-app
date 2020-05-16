@@ -2,6 +2,7 @@ package br.com.marcosouza.spacexapp.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
 class Launch (
     @Expose
@@ -14,7 +15,7 @@ class Launch (
 
     @Expose
     @SerializedName("launch_date_utc")
-    val launchDate: String? = null,
+    val launchDate: Date? = null,
 
     @Expose
     @SerializedName("rocket")
@@ -50,7 +51,7 @@ class Launch (
 class LaunchSite (
     @Expose
     @SerializedName("site_id")
-    val siteId: Int? = null,
+    val siteId: String? = null,
 
     @Expose
     @SerializedName("site_name")
