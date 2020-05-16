@@ -10,4 +10,9 @@
     <string name="rocket_model">CCAES SLC 40</string>
     <string name="rocket_lauch_date">20-05-2020</string>
     <string name="rocket_is_active">ATIVO</string>
+    <string name="rocket_lauch_status">Sucess</string>
+    <string name="rocket_lauch_type">v1.0</string>
+    <string name="rocket_lauch_symmary">Falcon 9</string>
+    <string name="rocket_lauch_first_stage">Cores: 4</string>
+    <string name="rocket_lauch_second_stage">Payloads: 150kg</string>
 </resources>

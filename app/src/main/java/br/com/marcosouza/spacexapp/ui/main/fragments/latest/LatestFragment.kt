@@ -99,6 +99,6 @@ class LatestFragment : Fragment(),
     }
 
     override fun onItemSelected(position: Int, item: Launch) {
-        TODO("Not yet implemented")
+        println("DEBUG: ITEM: $item")
     }
 }

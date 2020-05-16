@@ -42,7 +42,15 @@ class Rocket (
 
     @Expose
     @SerializedName("country")
-    val country: String? = null
+    val country: String? = null,
+
+    @Expose
+    @SerializedName("first_stage")
+    val firstStage: Stage? = null,
+
+    @Expose
+    @SerializedName("second_stage")
+    val secondStage: Stage? = null
 
 ) {
     override fun toString(): String {
@@ -64,6 +72,49 @@ class Rocket (
         var result = id ?: 0
         return result
     }
+}
 
+class Stage(
 
+    @Expose
+    @SerializedName("core")
+    val cores: List<Core>? = null,
+
+    @Expose
+    @SerializedName("block")
+    val block: Int? = null,
+
+    @Expose
+    @SerializedName("payloads")
+    val payloads: List<Payload>? =null
+){
+
+    override fun toString(): String {
+        return "Stage(cores=$cores, block=$block, payloads=$payloads)"
+    }
+}
+
+class Core(
+    @Expose
+    @SerializedName("core_serial")
+    val coreSerial: String? = null
+){
+    override fun toString(): String {
+        return "Core(coreSerial=$coreSerial)"
+    }
+}
+
+class Payload(
+
+    @Expose
+    @SerializedName("payload_id")
+    val id: String? = null,
+
+    @Expose
+    @SerializedName("payload_mass_kg")
+    val payloadMassKg: Int? = null
+){
+    override fun toString(): String {
+        return "Payload(id=$id, payloadMassKg=$payloadMassKg)"
+    }
 }

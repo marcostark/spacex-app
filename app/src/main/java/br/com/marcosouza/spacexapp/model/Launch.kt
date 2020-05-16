@@ -23,9 +23,19 @@ class Launch (
 
     @Expose
     @SerializedName("launch_site")
-    val launchSite: LaunchSite? = null
+    val launchSite: LaunchSite? = null,
 
+    @Expose
+    @SerializedName("launch_success")
+    val launchSuccess: Boolean? = false,
 
+    @Expose
+    @SerializedName("details")
+    val details: Boolean? = false,
+
+    @Expose
+    @SerializedName("links")
+    val links: Links? = null
 ){
 
     override fun toString(): String {
@@ -60,6 +70,27 @@ class LaunchSite (
     @Expose
     @SerializedName("site_name_long")
     val siteNameLong: String? = null
+){
+
+}
+
+class Links (
+
+    @Expose
+    @SerializedName("mission_patch_small")
+    val missionPatchSmall: String? = null,
+
+    @Expose
+    @SerializedName("reddit_launch")
+    val redditLaunch: String? = null,
+
+    @Expose
+    @SerializedName("video_link")
+    val videoLink: String? = null,
+
+    @Expose
+    @SerializedName("flickr_images")
+    val flickrImages: List<String>? = null
 ){
 
 }
