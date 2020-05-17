@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.marcosouza.spacexapp.R
 import br.com.marcosouza.spacexapp.model.Launch
 import br.com.marcosouza.spacexapp.ui.adapter.LaunchListAdapter
+import br.com.marcosouza.spacexapp.ui.main.ICallbackListener
 import br.com.marcosouza.spacexapp.ui.main.MainViewModel
 import br.com.marcosouza.spacexapp.ui.main.state.DataStateListener
 import br.com.marcosouza.spacexapp.ui.main.state.MainStateEvent
@@ -27,6 +28,8 @@ class LatestFragment : Fragment(),
     private lateinit var viewModel: MainViewModel
     lateinit var dataStateListener: DataStateListener
     lateinit var launchListAdapter: LaunchListAdapter
+
+    internal lateinit var callbackListener: ICallbackListener
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -99,6 +102,10 @@ class LatestFragment : Fragment(),
     }
 
     override fun onItemSelected(position: Int, item: Launch) {
-        println("DEBUG: ITEM: $item")
+        this.callbackListener.onCallBackLaunchDetails(item)
+    }
+
+    fun setOnLaunchDetailClickListener(OnLaunchDetailClickListener: ICallbackListener) {
+        this.callbackListener = OnLaunchDetailClickListener
     }
 }

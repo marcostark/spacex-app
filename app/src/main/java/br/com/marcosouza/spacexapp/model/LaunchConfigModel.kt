@@ -6,18 +6,18 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class LaunchConfigModel(
+class LaunchConfigModel(
     @Expose
     @SerializedName("payload_id")
     var id: String?,
 
     @Expose
     @SerializedName( "rocket_name")
-    var name: String?,
+    var rocketName: String?,
 
     @Expose
     @SerializedName("rocket_type")
-    var type: String?,
+    var rocketType: String?,
 
     @Expose
     @SerializedName("first_stage")
@@ -29,13 +29,14 @@ data class LaunchConfigModel(
 ) : Parcelable
 
 @Parcelize
-data class CoresListModel(
+class CoresListModel(
     @Expose
-    @SerializedName("cores") var cores: List<CoreSpecModel>?
+    @SerializedName("cores")
+    var cores: List<CoreSpecModel>?
 ) : Parcelable
 
 @Parcelize
-data class CoreSpecModel(
+class CoreSpecModel(
     @Expose
     @SerializedName( "core_serial") var serial: String?,
     @Expose
@@ -59,7 +60,7 @@ data class CoreSpecModel(
 ) : Parcelable
 
 @Parcelize
-data class SecondStagePayloadListModel(
+class SecondStagePayloadListModel(
     @Expose
     @SerializedName("block") var block: Int?,
     @Expose
@@ -67,7 +68,7 @@ data class SecondStagePayloadListModel(
 ) : Parcelable
 
 @Parcelize
-data class PayloadModel(
+class PayloadModel(
     @Expose
     @SerializedName( "payload_id") var id: String?,
     @Expose

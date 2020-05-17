@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import br.com.marcosouza.spacexapp.R
-import br.com.marcosouza.spacexapp.ui.main.fragments.dragons.DragonsFragment
+import br.com.marcosouza.spacexapp.model.Launch
 import br.com.marcosouza.spacexapp.ui.main.fragments.latest.LatestFragment
 import br.com.marcosouza.spacexapp.ui.main.fragments.rockets.RocketsFragment
 import br.com.marcosouza.spacexapp.ui.main.state.DataStateListener
@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity(),
-    DataStateListener {
+    DataStateListener, ICallbackListener {
 
     private lateinit var viewModel: MainViewModel
     private lateinit var navigationView: BottomNavigationView
@@ -38,6 +38,12 @@ class MainActivity : AppCompatActivity(),
                 R.id.fragment_container,
                 fragment, "fragment")
             .commit()
+    }
+
+    override fun onAttachFragment(fragment: Fragment) {
+        when(fragment) {
+            is LatestFragment -> fragment.setOnLaunchDetailClickListener(this)
+        }
     }
 
     override fun onDataStateChange(dataState: DataState<*>?) {
@@ -93,5 +99,9 @@ class MainActivity : AppCompatActivity(),
             }
             false
         }
+
+    override fun onCallBackLaunchDetails(launch: Launch) {
+        println("DEBUG: ITEM: $launch")
+    }
 
 }

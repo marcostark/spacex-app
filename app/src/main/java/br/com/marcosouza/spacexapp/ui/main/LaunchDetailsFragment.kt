@@ -1,12 +1,17 @@
 package br.com.marcosouza.spacexapp.ui.main
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 
 import br.com.marcosouza.spacexapp.R
+import br.com.marcosouza.spacexapp.ui.main.state.DataStateListener
+import java.lang.ClassCastException
+import java.lang.Exception
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -19,6 +24,10 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class LaunchDetailsFragment : Fragment() {
+
+    private lateinit var viewModel: MainViewModel
+    lateinit var dataStateListener: DataStateListener
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -37,6 +46,26 @@ class LaunchDetailsFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_launch_details, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel = activity?.run {
+            ViewModelProvider(this).get(MainViewModel::class.java)
+        }?:throw Exception("Atividade inválida!")
+
+        //subscribeObservers()
+    }
+
+    // Caso metodo nao seja adicionado na classe que implementa a interface
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        try {
+            dataStateListener = context as DataStateListener
+        }catch (e: ClassCastException) {
+            println("DEBUG: $context must implement DataStateListener")
+        }
     }
 
     companion object {

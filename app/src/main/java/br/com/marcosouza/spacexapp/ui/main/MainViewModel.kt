@@ -17,6 +17,12 @@ class MainViewModel: ViewModel(){
     private val _stateEvent: MutableLiveData<MainStateEvent> = MutableLiveData()
     private val _viewState: MutableLiveData<MainViewState> = MutableLiveData()
 
+    val seletedLaunch = MutableLiveData<Launch>()
+
+    fun select(launch: Launch) {
+        seletedLaunch.value =  launch
+    }
+
     private val _text = MutableLiveData<String>().apply {
         value = "This is rockets Fragment"
     }

@@ -69,7 +69,7 @@ class Rocket (
     }
 
     override fun hashCode(): Int {
-        var result = id ?: 0
+        val result = id ?: 0
         return result
     }
 }
