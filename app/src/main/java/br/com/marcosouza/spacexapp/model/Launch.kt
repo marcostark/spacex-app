@@ -19,7 +19,7 @@ class Launch (
 
     @Expose
     @SerializedName("rocket")
-    val rocket: Rocket? = null,
+    val rocket: LaunchConfigModel? = null,
 
     @Expose
     @SerializedName("launch_site")
