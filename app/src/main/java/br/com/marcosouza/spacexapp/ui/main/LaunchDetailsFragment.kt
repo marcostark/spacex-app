@@ -6,9 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 
 import br.com.marcosouza.spacexapp.R
+import br.com.marcosouza.spacexapp.model.Launch
 import br.com.marcosouza.spacexapp.ui.main.state.DataStateListener
 import java.lang.ClassCastException
 import java.lang.Exception
@@ -55,7 +57,7 @@ class LaunchDetailsFragment : Fragment() {
             ViewModelProvider(this).get(MainViewModel::class.java)
         }?:throw Exception("Atividade inválida!")
 
-        //subscribeObservers()
+        subscribeObservers()
     }
 
     // Caso metodo nao seja adicionado na classe que implementa a interface
@@ -66,6 +68,12 @@ class LaunchDetailsFragment : Fragment() {
         }catch (e: ClassCastException) {
             println("DEBUG: $context must implement DataStateListener")
         }
+    }
+
+    private fun subscribeObservers(){
+        viewModel.seletedLaunch.observe(viewLifecycleOwner, Observer<Launch> { launch ->
+            println("DEBUG: Launch Detail: $launch")
+        })
     }
 
     companion object {

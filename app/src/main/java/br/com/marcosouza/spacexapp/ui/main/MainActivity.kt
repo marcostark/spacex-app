@@ -102,6 +102,7 @@ class MainActivity : AppCompatActivity(),
 
     override fun onCallBackLaunchDetails(launch: Launch) {
         println("DEBUG: ITEM: $launch")
+        viewModel.select(launch)
+        this.showFragment(LaunchDetailsFragment())
     }
-
 }
