@@ -6,4 +6,14 @@
     <string name="title_rockets">Rockets</string>
     <string name="title_latest">Latest</string>
     <string name="title_dragons">Dragons</string>
+    <string name="rocket_name">Falcon 9</string>
+    <string name="rocket_model">CCAES SLC 40</string>
+    <string name="rocket_lauch_date">20-05-2020</string>
+    <string name="rocket_is_active">ATIVO</string>
+    <string name="rocket_lauch_status">Sucess</string>
+    <string name="rocket_lauch_type">v1.0</string>
+    <string name="rocket_lauch_symmary">Falcon 9</string>
+    <string name="rocket_lauch_first_stage">Cores: 4</string>
+    <string name="rocket_lauch_second_stage">Payloads: 150kg</string>
+    <string name="all_launches">All Launches</string>
 </resources>

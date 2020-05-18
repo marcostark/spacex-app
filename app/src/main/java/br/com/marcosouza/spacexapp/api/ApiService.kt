@@ -17,14 +17,22 @@ interface ApiService {
     ): LiveData<GenericApiResponse<User>>
 
     @GET("launches/latest")
-    fun getLatestLauch(
+    fun getLaunch(
     ): LiveData<GenericApiResponse<Launch>>
+
+    @GET("launches/next")
+    fun getLaunchNext(
+    ): LiveData<GenericApiResponse<Launch>>
+
+    @GET("launches")
+    fun getAllLaunches(
+    ): LiveData<GenericApiResponse<List<Launch>>>
 
     @GET("rockets")
     fun getAllRockets(
-    ): LiveData<GenericApiResponse<Rocket>>
+    ): LiveData<GenericApiResponse<List<Rocket>>>
 
     @GET("dragons")
     fun getAllDragons(
-    ): LiveData<GenericApiResponse<Dragons>>
+    ): LiveData<GenericApiResponse<List<Dragons>>>
 }

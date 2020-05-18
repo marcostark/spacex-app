@@ -7,20 +7,19 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import br.com.marcosouza.spacexapp.R
-import br.com.marcosouza.spacexapp.model.Post
-import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.blog_list_item.view.*
+import br.com.marcosouza.spacexapp.model.Rocket
+import kotlinx.android.synthetic.main.rocket_list_item.view.*
 
-class LatestLaunchListAdapter(private val interaction: Interaction? = null) :
+class RocketsListAdapter(private val interaction: Interaction? = null) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Post>() {
+    val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Rocket>() {
 
-        override fun areItemsTheSame(oldItem: Post, newItem: Post): Boolean {
-            return oldItem.pk == newItem.pk
+        override fun areItemsTheSame(oldItem: Rocket, newItem: Rocket): Boolean {
+            return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: Post, newItem: Post): Boolean {
+        override fun areContentsTheSame(oldItem: Rocket, newItem: Rocket): Boolean {
             return oldItem == newItem
         }
 
@@ -30,9 +29,9 @@ class LatestLaunchListAdapter(private val interaction: Interaction? = null) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
-        return PostViewHolder(
+        return RocketViewHolder(
             LayoutInflater.from(parent.context).inflate(
-                R.layout.blog_list_item,
+                R.layout.rocket_list_item,
                 parent,
                 false
             ),
@@ -42,7 +41,7 @@ class LatestLaunchListAdapter(private val interaction: Interaction? = null) :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
-            is PostViewHolder -> {
+            is RocketViewHolder -> {
                 holder.bind(differ.currentList.get(position))
             }
         }
@@ -52,30 +51,36 @@ class LatestLaunchListAdapter(private val interaction: Interaction? = null) :
         return differ.currentList.size
     }
 
-    fun submitList(list: List<Post>) {
+    fun submitList(list: List<Rocket>) {
         differ.submitList(list)
     }
 
-    class PostViewHolder
+    class RocketViewHolder
     constructor(
         itemView: View,
         private val interaction: Interaction?
     ) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(item: Post) = with(itemView) {
+        fun bind(item: Rocket) = with(itemView) {
             itemView.setOnClickListener {
                 interaction?.onItemSelected(adapterPosition, item)
             }
 
-            itemView.blog_title.text = item.title
-            Glide.with(itemView.context)
-                .load(item.image)
-                .into(itemView.blog_image)
+            itemView.text_rocket_title.text = item.rocketName
+            if(item.active == true) {
+                itemView.text_rocket_is_active.text = "ATIVO"
+            } else  {
+                itemView.text_rocket_is_active.text = "INATIVO"
+                itemView.text_rocket_is_active.setBackgroundColor(resources.getColor(R.color.red))
+            }
+//            Glide.with(itemView.context)
+//                .load(item.image)
+//                .into(itemView.blog_image)
         }
     }
 
     interface Interaction {
-        fun onItemSelected(position: Int, item: Post)
+        fun onItemSelected(position: Int, item: Rocket)
     }
 }
 
