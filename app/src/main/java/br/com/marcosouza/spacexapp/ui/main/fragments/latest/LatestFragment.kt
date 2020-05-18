@@ -18,9 +18,6 @@ import br.com.marcosouza.spacexapp.ui.main.state.DataStateListener
 import br.com.marcosouza.spacexapp.ui.main.state.MainStateEvent
 import br.com.marcosouza.spacexapp.util.TopSpacingItemDecoration
 import kotlinx.android.synthetic.main.fragment_latest.*
-import kotlinx.android.synthetic.main.fragment_main.*
-import java.lang.ClassCastException
-import java.lang.Exception
 
 class LatestFragment : Fragment(),
     LaunchListAdapter.Interaction  {
@@ -29,7 +26,7 @@ class LatestFragment : Fragment(),
     lateinit var dataStateListener: DataStateListener
     lateinit var launchListAdapter: LaunchListAdapter
 
-    internal lateinit var callbackListener: ICallbackListener
+    private lateinit var callbackListener: ICallbackListener
 
     override fun onCreateView(
         inflater: LayoutInflater,

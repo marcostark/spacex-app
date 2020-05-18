@@ -15,4 +15,5 @@
     <string name="rocket_lauch_symmary">Falcon 9</string>
     <string name="rocket_lauch_first_stage">Cores: 4</string>
     <string name="rocket_lauch_second_stage">Payloads: 150kg</string>
+    <string name="all_launches">All Launches</string>
 </resources>

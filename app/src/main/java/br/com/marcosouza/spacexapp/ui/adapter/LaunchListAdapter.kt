@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.DiffUtil
 import br.com.marcosouza.spacexapp.R
 import br.com.marcosouza.spacexapp.model.Launch
 import br.com.marcosouza.spacexapp.util.Utils
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.launch_list_item.view.*
 
 class LaunchListAdapter(private val interaction: Interaction? = null) :
@@ -70,9 +71,9 @@ class LaunchListAdapter(private val interaction: Interaction? = null) :
             itemView.text_launch_title.text = item.missionName
             itemView.text_launch_site.text = item.launchSite?.siteName
             itemView.text_launch_date.text = Utils.toSimpleString(item.launchDate)
-//            Glide.with(itemView.context)
-//                .load(item.image)
-//                .into(itemView.blog_image)
+            Glide.with(itemView.context)
+                .load(item.links?.missionPatchSmall)
+                .into(itemView.image_launch)
         }
     }
 

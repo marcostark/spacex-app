@@ -10,11 +10,12 @@
     android:layout_marginHorizontal="20dp"
     >
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="20dp"
+        android:background="@color/colorPrimary"
         >
 
         <ImageView
@@ -51,7 +52,7 @@
                 android:id="@+id/text_launch_title"
                 android:text="@string/rocket_name"
                 android:textStyle="bold"
-                android:textColor="#000"
+                android:textColor="@color/white"
                 android:textSize="18sp"
                 android:layout_marginTop="4dp"
                 />
@@ -61,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/text_launch_site"
                 android:text="@string/rocket_model"
-                android:textColor="#000"
+                android:textColor="@color/white"
                 android:textSize="12sp"
                 android:layout_marginTop="4dp"
                 />
@@ -71,11 +72,11 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/text_launch_date"
                 android:text="@string/rocket_lauch_date"
-                android:textColor="#000"
+                android:textColor="@color/white"
                 android:textSize="12sp"
                 android:layout_marginTop="4dp"
                 />
 
         </LinearLayout>
-    </androidx.appcompat.widget.LinearLayoutCompat>
+    </LinearLayout>
 </androidx.cardview.widget.CardView>

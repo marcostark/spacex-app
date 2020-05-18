@@ -31,7 +31,7 @@ class Launch (
 
     @Expose
     @SerializedName("details")
-    val details: Boolean? = false,
+    val details: String? = null,
 
     @Expose
     @SerializedName("links")
