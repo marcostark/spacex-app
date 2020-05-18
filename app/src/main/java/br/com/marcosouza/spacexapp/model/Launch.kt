@@ -18,6 +18,10 @@ class Launch (
     val launchDate: Date? = null,
 
     @Expose
+    @SerializedName("launch_date_unix")
+    val launchDateUnix: Long? = null,
+
+    @Expose
     @SerializedName("rocket")
     val rocket: LaunchConfigModel? = null,
 

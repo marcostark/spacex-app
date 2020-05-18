@@ -33,7 +33,7 @@
             <ImageView
                 android:layout_width="85dp"
                 android:layout_height="85dp"
-                android:id="@+id/image_launch"
+                android:id="@+id/image_launch_mission"
                 android:scaleType="fitXY"
                 android:layout_marginTop="6dp"
                 android:src="@drawable/falconsat01"
@@ -79,15 +79,15 @@
                     android:layout_marginTop="4dp"
                     />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/text_launch_date"
-                    android:text="@string/rocket_lauch_date"
-                    android:textColor="@color/white"
-                    android:textSize="12sp"
-                    android:layout_marginTop="4dp"
-                    />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:id="@+id/text_launch_date"-->
+<!--                    android:text="@string/rocket_lauch_date"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="12sp"-->
+<!--                    android:layout_marginTop="4dp"-->
+<!--                    />-->
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

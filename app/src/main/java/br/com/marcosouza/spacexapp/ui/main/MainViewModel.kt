@@ -43,14 +43,6 @@ class MainViewModel: ViewModel(){
         println("DEBUG: New StateEvent detected: $stateEvent")
         when(stateEvent){
 
-            is GetBlogPostsEvent -> {
-                return Repository.getPosts()
-            }
-
-            is GetUserEvent -> {
-                return Repository.getUser(stateEvent.userId)
-            }
-
             is GetRocketsEvent -> {
                 return Repository.getAllRockets()
             }
@@ -75,18 +67,6 @@ class MainViewModel: ViewModel(){
                 return AbsentLiveData.create()
             }
         }
-    }
-
-    fun setPostsListData(posts: List<Post>){
-        val update = getCurrentViewStateOrNew()
-        update.posts = posts
-        _viewState.value = update
-    }
-
-    fun setUser(user: User){
-        val update = getCurrentViewStateOrNew()
-        update.user = user
-        _viewState.value = update
     }
 
     fun setRocketsListData(rockets: List<Rocket>){

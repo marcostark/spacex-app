@@ -18,10 +18,11 @@ O aplicativo está utilizado a api de código aberto, (SpaceX REST API)[https://
 - NetworkBoundResource (as recommend by architecture guide in google sample. See  [here](https://github.com/googlesamples/android-architecture-components/blob/master/GithubBrowserSample/app/src/main/java/com/android/example/github/repository/NetworkBoundResource.kt)).
 
 ### Todo
-- Próximo lançamento (Contagem regressiva)
+- [x] Próximo lançamento (Contagem regressiva)
 - [x] Lista de lançamentos passados
-- [x] Lista de lançamentos futuros
 - [x] Lista de veiculos espaciais
+- [x] Lançamentos futuro
+- Lista de lançamentos futuros
 - Lista de navios plataforma de lançamento
 
 - Icons made by [Icongeek26](https://www.flaticon.com/authors/icongeek26) from (Flaticon)[https://www.flaticon.com/]
