@@ -2,7 +2,7 @@
 
  - Aplicativo Android para rastrear dados da SpaceX
 
-O aplicativo está utilizado a api de código aberto, (SpaceX REST API)[https://docs.spacexdata.com]
+O aplicativo está utilizado a api de código aberto, [SpaceX REST API](https://docs.spacexdata.com)
 
 **Este aplicativo não possui qualquer vinculo com a empresa SpaceX.**
 
@@ -25,4 +25,4 @@ O aplicativo está utilizado a api de código aberto, (SpaceX REST API)[https://
 - Lista de lançamentos futuros
 - Lista de navios plataforma de lançamento
 
-- Icons made by [Icongeek26](https://www.flaticon.com/authors/icongeek26) from (Flaticon)[https://www.flaticon.com/]
+- Icons made by [Icongeek26](https://www.flaticon.com/authors/icongeek26) from [Flaticon](https://www.flaticon.com/)
