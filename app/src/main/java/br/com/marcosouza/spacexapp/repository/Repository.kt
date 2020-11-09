@@ -84,34 +84,4 @@ object Repository {
             }
         }.asLiveData()
     }
-
-    fun getPosts(): LiveData<DataState<MainViewState>> {
-        return object: NetworkBoundResource<List<Post>, MainViewState>(){
-            override fun handleApiSucessResponse(response: ApiSuccessResponse<List<Post>>) {
-                result.value = DataState.data(
-                    data = MainViewState(
-                        posts = response.body
-                    )
-                )
-            }
-            override fun createCall(): LiveData<GenericApiResponse<List<Post>>> {
-                return MyRetrofitBuilder.apiService.getPosts()
-            }
-        }.asLiveData()
-    }
-
-    fun getUser(userId: String): LiveData<DataState<MainViewState>> {
-        return object: NetworkBoundResource<User, MainViewState>(){
-            override fun handleApiSucessResponse(response: ApiSuccessResponse<User>) {
-                result.value = DataState.data(
-                    data = MainViewState(
-                        user = response.body
-                    )
-                )
-            }
-            override fun createCall(): LiveData<GenericApiResponse<User>> {
-                return MyRetrofitBuilder.apiService.getUser(userId)
-            }
-        }.asLiveData()
-    }
 }
