@@ -8,14 +8,6 @@ import retrofit2.http.Path
 
 interface ApiService {
 
-    @GET("placeholder/blogs")
-    fun getPosts(): LiveData<GenericApiResponse<List<Post>>>
-
-    @GET("placeholder/user/{userId}")
-    fun getUser(
-        @Path("userId") userId: String
-    ): LiveData<GenericApiResponse<User>>
-
     @GET("launches/latest")
     fun getLaunch(
     ): LiveData<GenericApiResponse<Launch>>
