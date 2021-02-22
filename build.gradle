@@ -8,7 +8,6 @@ buildscript {
         maven {
             url "https://plugins.gradle.org/m2/"
         }
-        
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.6.3'
@@ -21,7 +20,6 @@ buildscript {
 
 subprojects {
     apply plugin: "org.jlleitschuh.gradle.ktlint" // Version should be inherited from parent
-
     // Optionally configure plugin
     ktlint {
         debug = true
@@ -32,10 +30,28 @@ allprojects {
     repositories {
         google()
         jcenter()
-        
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+configurations {
+    detekt
+}
+
+task detekt(type: JavaExec) {
+    main = "io.gitlab.arturbosch.detekt.cli.Main"
+    classpath = configurations.detekt
+    def input = "$projectDir"
+    def config = "$projectDir/detekt-config.yml"
+    def exclude = ".*/build/.*,.*/resources/.*"
+    def params = [ '-i', input, '-c', config, '-ex', exclude]
+    args(params)
+}
+
+dependencies {
+    detekt 'io.gitlab.arturbosch.detekt:detekt-cli:1.16.0-RC1'
+}
+
