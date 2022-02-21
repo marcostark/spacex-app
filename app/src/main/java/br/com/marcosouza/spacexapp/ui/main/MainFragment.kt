@@ -68,7 +68,11 @@ class MainFragment : Fragment() {
 
     private fun initComponents(launch: Launch) {
         val dateFormated = Utils.toSimpleString(launch.launchDate)
-        context?.let { Glide.with(it).load(launch.links?.missionPatchSmall).into(image_launch_mission) }
+        context?.let { context ->
+            Glide.with(context)
+                .load(launch.links?.missionPatchSmall)
+                .into(image_launch_mission)
+        }
         text_launch_date_upcoming.text = dateFormated
         text_launch_title.text = launch.rocket?.rocketName
         text_launch_site_value.text = launch.launchSite?.siteNameLong
@@ -76,11 +80,11 @@ class MainFragment : Fragment() {
         val startDate = Calendar.getInstance()
 
         val startDateMillis =
-            startDate.timeInMillis // data inicial em milisegundos
+            startDate.timeInMillis
 
-        val endDateMillis = launch.launchDateUnix?.times(1000) // data final em milisegundos
+        val endDateMillis = launch.launchDateUnix?.times(1000)
 
-        val totalMillis = endDateMillis?.minus(startDateMillis) //tempo total em milliseconds
+        val totalMillis = endDateMillis?.minus(startDateMillis)
 
         this.countdownToLaunch(totalMillis)
 
@@ -102,7 +106,6 @@ class MainFragment : Fragment() {
         viewModel.setStateEvent(MainStateEvent.GetNextLaunchEvent())
     }
 
-    // Caso metodo nao seja adicionado na classe que implementa a interface
     override fun onAttach(context: Context) {
         super.onAttach(context)
         try {
@@ -128,7 +131,7 @@ class MainFragment : Fragment() {
                 val seconds =
                     TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)
                 text_launch_count_down.text =
-                    days.toString() + """ days - """ + hours + """ hours - """ + minutes + """ minutes - """ + seconds + """ seconds"""
+                    "$days days - $hours hours - $minutes minutes - $seconds seconds"
             }
 
             override fun onFinish() {

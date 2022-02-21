@@ -1,5 +1,6 @@
 package br.com.marcosouza.spacexapp.ui.adapter
 
+import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -73,6 +74,8 @@ class LaunchListAdapter(private val interaction: Interaction? = null) :
             itemView.text_launch_date.text = Utils.toSimpleString(item.launchDate)
             Glide.with(itemView.context)
                 .load(item.links?.missionPatchSmall)
+                .placeholder(R.drawable.ic_placeholder)
+                .fallback(R.drawable.ic_broken_image)
                 .into(itemView.image_launch)
         }
     }
